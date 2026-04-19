@@ -1,61 +1,71 @@
-# 🌌 Om Patel | AI Engineer & Data Specialist
- 
+# 🌌 Om Patel | Data Systems & AI Architect
+
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fredoka&size=35&pause=1000&color=00FFCC&center=true&vCenter=true&width=600&lines=Software+Engineer;AI+&+ML+Student;Data+Structure+Expert;Full+Stack+Developer" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Space+Grotesk&size=35&pause=800&color=00FFCC&center=true&vCenter=true&width=700&lines=Data+Engineer+%26+AI%2FML+Specialist;Building+Scalable+Data+Pipelines;250%2B+Problems+Solved+on+LeetCode;Optimizing+AI+Workflows" alt="Typing SVG" />
 </div>
 
 ---
 
-### ⚡ Overview
-Building optimized systems and high-impact AI solutions. Currently a 2nd-year student at **Baba Mastnath University**, specializing in **Artificial Intelligence and Machine Learning**.
+### 👤 Profile Snapshot
+> **Aspiring Engineer** passionate about transforming raw data into intelligent insights. Currently mastering Data Structures and building AI-driven solutions.
 
-- 🔭 I’m currently working on **Med-scan** (AI Medical OCR)
-- 🌱 I’m currently learning **Deep Learning & Neural Networks**
-- ✍️ Consistency: **200+ Days Streak** on LeetCode & GFG
-- 📧 Reach me at: [omp83075@gmail.com](mailto:omp83075@gmail.com)
+* 📍 **Location:** Rohtak, India 🇮🇳
+* 📧 **Email:** [omp83075@gmail.com](mailto:omp83075@gmail.com)
+* 🎓 **Education:** 2nd Year, AI & ML @ Baba Mastnath University
 
 ---
 
-### 🛠 Tech Arsenal
+### 🚀 Technical Arsenal
 
 <div align="left">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-  <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
+  <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi&logoColor=white" />
   <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
 </div>
 
 ---
 
-### 🚀 Key Projects
+### 🏆 Coding Ecosystem (Performance Metrics)
 
-| Project | Tech Stack | Status |
+| Platform | Stats & Badges | Profile Link |
 | :--- | :--- | :--- |
-| **Med-scan AI** | FastAPI, PaddleOCR, Streamlit | 🏗️ In Progress |
-| **Mental Health Tracker** | Python, Sentiment Analysis | ✅ Completed |
-| **Autocomplete Trie** | Data Structures, Python | ✅ Optimized |
-| **DSA POTD Daily** | Python, C++ | 📈 Consistent |
+| **LeetCode** | 🧩 250+ Solved \| 200+ Days Streak | [Profile](https://leetcode.com/yagval_1976) |
+| **GeeksforGeeks** | 💻 DSA Mastered \| Top Ranker | [Profile](https://www.geeksforgeeks.org/user/omp83075/) |
+| **Codolio** | 🛡️ Verified Dev Score | [Profile](https://codolio.com/profile/Opiu.m113) |
+| **GitHub** | 🛠️ 10+ Repositories | [Profile](https://github.com/Codeomii) |
 
 ---
 
-### 📊 Coding Stats
+### 🛠 Active Projects
+* **Med-scan:** AI-powered Medical OCR using FastAPI & PaddleOCR.
+* **Mental Health Tracker:** Sentiment analysis tool for psychological well-being.
+* **DSA Daily POTD:** Consistent algorithmic problem-solving repository.
 
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Codeomii&show_icons=true&theme=tokyonight&count_private=true" width="45%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Codeomii&theme=tokyonight" width="45%" />
-</div>
+---
+
+### 📊 GitHub Activity
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=Codeomii&show_icons=true&theme=tokyonight&border_radius=10" width="48%" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Codeomii&theme=tokyonight&border_radius=10" width="48%" />
+</p>
 
 ---
 
 ### 🤝 Connect with Me
-<p align="left">
-<a href="https://linkedin.com/in/ompatel2610/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="ompatel2610" height="30" width="40" /></a>
-<a href="https://github.com/Codeomii" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="Codeomii" height="30" width="40" /></a>
-</p>
+<div align="left">
+  <a href="https://linkedin.com/in/ompatel2610/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="mailto:omp83075@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+  </a>
+</div>
 
----
+<br />
+
 <p align="center">
-  <i>"Logic will get you from A to B. Imagination will take you everywhere."</i><br>
-  <b>© 2026 Om Patel</b>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=00FFCC&height=100&section=footer" width="100%" />
 </p>
