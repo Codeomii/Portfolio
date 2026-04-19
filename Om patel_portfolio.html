@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Om Patel - Data Engineer & AI/ML Specialist Portfolio">
+    <title>Om Patel | Data Engineer & AI Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Space+Grotesk:wght@500;700&family=Syncopate:wght@700&family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;800&display=swap');
+        
+        :root {
+            --primary-theme: #00ffcc;
+            --primary-dark: #00b38f;
+            --bg-dark: #050608;
+            --card-dark: #0d1117;
+            --text-main: #f8fafc;
+            --glow-color: rgba(0, 255, 204, 0.4);
+            --accent-gold: #ffd700;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            font-size: 1.1rem;
+        }
+
+        .font-cherry {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Perspective Cyber Flow Background */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, #050608, #0a0c12);
+        }
+
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Hero Styling */
+        .hero-name {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: clamp(3.5rem, 15vw, 10rem);
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary-theme) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 30px rgba(0, 255, 204, 0.3));
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        .pill-badge {
+            font-family: 'Fira Code', monospace;
+            border: 1px solid rgba(0, 255, 204, 0.4);
+            background: rgba(0, 255, 204, 0.05);
+            color: var(--primary-theme);
+            padding: 8px 24px;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+        }
+
+        /* Ultra Pop & Lift Animation for Cards */
+        .pop-card {
+            background: rgba(13, 17, 23, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(0) scale(1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pop-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(0, 255, 204, 0.5);
+            box-shadow: 0 20px 40px -10px var(--glow-color);
+            z-index: 10;
+        }
+
+        /* Skills Bento Style */
+        .terminal-header {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 16px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; box-shadow: 0 0 10px #ff5f5680; }
+        .dot-yellow { background: #ffbd2e; box-shadow: 0 0 10px #ffbd2e80; }
+        .dot-green { background: #27c93f; box-shadow: 0 0 10px #27c93f80; }
+
+        .skill-category-label {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+            display: block;
+            opacity: 0.9;
+        }
+
+        .code-tag {
+            background: rgba(0, 255, 204, 0.05);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .pop-card:hover .code-tag {
+            border-color: var(--primary-theme);
+            color: var(--primary-theme);
+            background: rgba(0, 255, 204, 0.1);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(5, 6, 8, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-theme); }
+
+        .text-theme { color: var(--primary-theme); }
+        .bg-theme { background-color: var(--primary-theme); }
+        .border-theme { border-color: var(--primary-theme); }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            border-color: var(--primary-theme);
+            background: rgba(0, 255, 204, 0.05);
+            outline: none;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.15);
+        }
+
+        .nav-logo-symbol {
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 0 5px rgba(0, 255, 204, 0.2));
+        }
+        .group:hover .nav-logo-symbol {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 0 15px var(--primary-theme));
+        }
+
+        /* Typing cursor */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--primary-theme);
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Mobile Menu */
+        #mobileMenu {
+            transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobileMenu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="selection:bg-[#00ffcc] selection:text-black antialiased">
+
+    <!-- Cyber Flow Background -->
+    <canvas id="bgCanvas"></canvas>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+        <div class="py-4 px-6 md:px-10 flex justify-between items-center max-w-7xl mx-auto">
+            <!-- Stylized "OP" Symbol -->
+            <a href="#" class="flex items-center gap-4 group">
+                <div class="nav-logo-symbol">
+                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#00ffcc;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#008080;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M35 25C20 25 10 40 10 55C10 70 20 85 35 85C45 85 55 75 55 55M55 25V85M55 25C70 25 85 30 85 45C85 60 70 65 55 65" 
+                              stroke="url(#logoGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M48 20C40 15 30 18 25 25" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                        <path d="M60 45C70 42 80 45 82 55" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                </div>
+                <div class="hidden sm:block text-2xl font-cherry uppercase text-white tracking-tighter group-hover:text-theme transition-colors">
+                    OM<span class="text-theme">.</span>PATEL
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex gap-10 text-[13px] font-bold tracking-widest uppercase text-gray-300">
+                <a href="#about" class="hover:text-theme transition-colors">About</a>
+                <a href="#skills" class="hover:text-theme transition-colors">Skills</a>
+                <a href="#services" class="hover:text-theme transition-colors">Services</a>
+                <a href="#coding" class="hover:text-theme transition-colors">Stats</a>
+                <a href="#projects" class="hover:text-theme transition-colors">Projects</a>
+            </div>
+
+            <div class="hidden lg:block">
+                <button onclick="downloadResume()" class="px-8 py-3 rounded-full border border-theme text-theme text-[12px] font-bold hover:bg-theme hover:text-black transition-all uppercase tracking-tighter shadow-[0_0_15px_rgba(0,255,204,0.2)] hover:shadow-[0_0_25px_rgba(0,255,204,0.5)]">
+                    <i class="fa-solid fa-file-arrow-down mr-2"></i> Resume
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menuToggle" class="lg:hidden text-white text-2xl hover:text-theme transition-colors focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Links -->
+        <div id="mobileMenu" class="lg:hidden bg-black/90 backdrop-blur-lg border-b border-white/10 w-full flex flex-col items-center gap-6 py-0 text-sm font-bold tracking-widest uppercase text-gray-300">
+            <a href="#about" class="mobile-link hover:text-theme transition-colors mt-6">About</a>
+            <a href="#skills" class="mobile-link hover:text-theme transition-colors">Skills</a>
+            <a href="#services" class="mobile-link hover:text-theme transition-colors">Services</a>
+            <a href="#coding" class="mobile-link hover:text-theme transition-colors">Stats</a>
+            <a href="#projects" class="mobile-link hover:text-theme transition-colors">Projects</a>
+            <button onclick="downloadResume()" class="mobile-link mb-6 px-8 py-3 rounded-full border border-theme text-theme text-[12px] font-bold hover:bg-theme hover:text-black transition-all uppercase tracking-tighter">
+                <i class="fa-solid fa-file-arrow-down mr-2"></i> Resume
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative pt-20">
+        <div class="reveal active z-10 w-full max-w-5xl">
+            <div class="inline-block mb-8">
+                <span class="pill-badge shadow-lg"><i class="fa-solid fa-terminal mr-2"></i> Initializing System...</span>
+            </div>
+            
+            <h1 class="hero-name mb-6">OM PATEL</h1>
+            
+            <div class="h-[60px] md:h-[80px] flex justify-center items-center mb-8">
+                <p class="text-slate-300 text-lg md:text-3xl max-w-3xl mx-auto leading-relaxed font-cherry text-center">
+                    I build <span id="typewriter" class="text-theme font-bold"></span><span class="cursor">&nbsp;</span>
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mt-8">
+                <a href="#projects" class="bg-white text-black px-10 py-4 rounded-xl font-cherry text-lg hover:bg-theme hover:text-black transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(0,255,204,0.5)] uppercase tracking-wide">
+                    View Projects
+                </a>
+                <a href="#contact" class="bg-transparent border-2 border-white/20 text-white px-10 py-4 rounded-xl font-cherry text-lg hover:border-theme hover:text-theme transition-all uppercase tracking-wide">
+                    Let's Connect
+                </a>
+            </div>
+        </div>
+        
+        <!-- Animated Scroll Indicator -->
+        <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-50 hover:opacity-100 transition-opacity z-10">
+            <div class="w-8 h-14 border-2 border-white/50 rounded-full flex justify-center pt-2 backdrop-blur-sm">
+                <div class="w-1.5 h-3 bg-theme rounded-full animate-bounce shadow-[0_0_10px_rgba(0,255,204,0.8)]"></div>
+            </div>
+        </a>
+        
+        <!-- Glowing background aura -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-theme opacity-[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-7 reveal text-left">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="h-[2px] w-12 bg-theme"></div>
+                        <h2 class="text-theme font-cherry uppercase tracking-widest text-sm">The Engineer Behind the Data</h2>
+                    </div>
+                    <h3 class="text-5xl md:text-6xl font-cherry mb-8 uppercase text-white leading-tight">Hii, I'm Om Patel <span class="wave inline-block origin-bottom-right">👋</span></h3>
+                    <div class="space-y-6 text-slate-300 text-lg md:text-xl leading-relaxed font-light">
+                        <p>
+                            I am a passionate <span class="text-white font-bold italic font-cherry">AI & Machine Learning student</span> currently in my 2nd year at Baba Mastnath University. My core philosophy is built around a strong technical foundation and relentless problem-solving.
+                        </p>
+                        <p>
+                            I thrive on building optimized systems using <span class="text-theme font-bold font-cherry">Data Structures & Algorithms (DSA)</span>, Python programming, and exploring the intricate core concepts of Artificial Intelligence.
+                        </p>
+                        <p>
+                            Beyond the lecture hall, I am actively working on improving my logic and exploring real-world applications of AI/ML. I enjoy crafting small, impact-driven projects that challenge my technical limits.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 reveal" style="transition-delay: 200ms;">
+                    <div class="pop-card p-10 md:p-12 rounded-[40px] border-[#00ffcc20]">
+                        <h4 class="text-theme font-cherry text-[13px] tracking-[0.2em] mb-8 uppercase flex items-center gap-3">
+                            <i class="fa-solid fa-bolt"></i> Current Focus
+                        </h4>
+                        <div class="space-y-6 font-cherry text-left">
+                            <div class="border-l-4 border-theme pl-6 bg-gradient-to-r from-theme/10 to-transparent py-4 rounded-r-lg hover:pl-8 transition-all duration-300 cursor-default">
+                                <p class="text-white font-bold text-xl">Advanced DSA</p>
+                                <p class="text-slate-400 text-sm mt-1">Logic optimization & efficiency.</p>
+                            </div>
+                            <div class="border-l-4 border-cyan-400 pl-6 bg-gradient-to-r from-cyan-400/10 to-transparent py-4 rounded-r-lg hover:pl-8 transition-all duration-300 cursor-default">
+                                <p class="text-white font-bold text-xl">Python Engineering</p>
+                                <p class="text-slate-400 text-sm mt-1">Scalable backends & scripts.</p>
+                            </div>
+                            <div class="border-l-4 border-purple-400 pl-6 bg-gradient-to-r from-purple-400/10 to-transparent py-4 rounded-r-lg hover:pl-8 transition-all duration-300 cursor-default">
+                                <p class="text-white font-bold text-xl">ML Fundamentals</p>
+                                <p class="text-slate-400 text-sm mt-1">Model integration & engineering.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="py-32 px-6 relative">
+        <!-- Background Decor -->
+        <div class="absolute right-0 top-20 w-64 h-64 bg-cyan-600/10 rounded-full blur-[80px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="mb-20 reveal text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-4 mb-4">
+                    <div class="h-[2px] w-12 bg-theme"></div>
+                    <span class="text-theme font-cherry uppercase tracking-widest text-sm">Arsenal</span>
+                </div>
+                <h3 class="text-6xl md:text-8xl font-cherry uppercase text-white leading-none">Technical <br><span class="text-theme">Skills.</span></h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="pop-card rounded-3xl reveal">
+                    <div class="terminal-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <div class="p-8">
+                        <span class="skill-category-label"><i class="fa-solid fa-code mr-2"></i> LANGUAGES</span>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="code-tag">Python</span>
+                            <span class="code-tag">C</span>
+                            <span class="code-tag">C++</span>
+                            <span class="code-tag">HTML</span>
+                            <span class="code-tag">CSS</span>
+                            <span class="code-tag">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="pop-card rounded-3xl reveal" style="transition-delay: 100ms;">
+                    <div class="terminal-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <div class="p-8">
+                        <span class="skill-category-label"><i class="fa-solid fa-cubes mr-2"></i> LIBRARIES & TOOLS</span>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="code-tag">NumPy</span>
+                            <span class="code-tag">Pandas</span>
+                            <span class="code-tag">Scikit-learn</span>
+                            <span class="code-tag">Git/GitHub</span>
+                            <span class="code-tag">VS Code</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="pop-card rounded-3xl reveal" style="transition-delay: 200ms;">
+                    <div class="terminal-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <div class="p-8">
+                        <span class="skill-category-label"><i class="fa-solid fa-crosshairs mr-2"></i> FOCUS AREAS</span>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="code-tag">Data Science</span>
+                            <span class="code-tag">ML Algorithms</span>
+                            <span class="code-tag">Data Structures</span>
+                            <span class="code-tag">ETL Pipelines</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="pop-card rounded-3xl reveal">
+                    <div class="terminal-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <div class="p-8">
+                        <span class="skill-category-label"><i class="fa-solid fa-dumbbell mr-2"></i> CORE STRENGTHS</span>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="code-tag">Logical Thinking</span>
+                            <span class="code-tag">Algorithm Design</span>
+                            <span class="code-tag">Problem Solving</span>
+                            <span class="code-tag">Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="pop-card rounded-3xl reveal" style="transition-delay: 100ms;">
+                    <div class="terminal-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <div class="p-8">
+                        <span class="skill-category-label"><i class="fa-solid fa-users mr-2"></i> SOFT SKILLS</span>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="code-tag">Communication</span>
+                            <span class="code-tag">Teamwork</span>
+                            <span class="code-tag">Self-learning</span>
+                            <span class="code-tag">Adaptability</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="pop-card rounded-3xl reveal" style="transition-delay: 200ms;">
+                    <div class="terminal-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <div class="p-8">
+                        <span class="skill-category-label"><i class="fa-solid fa-book-open mr-2"></i> LEARNING NOW</span>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="code-tag">Deep Learning</span>
+                            <span class="code-tag">Neural Networks</span>
+                            <span class="code-tag">Advanced SQL</span>
+                            <span class="code-tag">Statistics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering Services Section -->
+    <section id="services" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal text-left">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="h-[2px] w-12 bg-theme"></div>
+                        <h2 class="text-theme font-cherry uppercase tracking-widest text-sm">Value Proposition</h2>
+                    </div>
+                    <h3 class="text-5xl md:text-6xl font-cherry mb-8 uppercase text-white leading-tight">Engineering <br/>Services</h3>
+                    <p class="text-slate-400 mb-10 text-lg md:text-xl leading-relaxed">
+                        As a dedicated technology student, I specialize in solving complex data challenges and building high-efficiency digital ecosystems. I am currently open to <strong class="text-white">Summer Internships</strong> and high-impact <strong class="text-white">Technical Projects</strong>.
+                    </p>
+                    
+                    <div class="space-y-4 font-cherry">
+                        <div class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-5 hover:bg-white/10 transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-theme/10 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-database text-theme"></i>
+                            </div>
+                            <span class="font-bold text-md md:text-lg uppercase tracking-tight text-white">ETL Pipeline Design & Optimization</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-5 hover:bg-white/10 transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-400/10 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-bolt text-cyan-400"></i>
+                            </div>
+                            <span class="font-bold text-md md:text-lg uppercase tracking-tight text-white">Scalable Data Retrieval Systems</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-5 hover:bg-white/10 transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-purple-400/10 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-brain text-purple-400"></i>
+                            </div>
+                            <span class="font-bold text-md md:text-lg uppercase tracking-tight text-white">ML Feature Engineering</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-5 hover:bg-white/10 transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-green-400/10 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-layer-group text-green-400"></i>
+                            </div>
+                            <span class="font-bold text-md md:text-lg uppercase tracking-tight text-white">Data Modeling & Architecture</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-6 reveal font-cherry">
+                    <div class="pop-card p-8 md:p-10 rounded-3xl text-center flex flex-col justify-center min-h-[200px]">
+                        <div class="text-4xl md:text-5xl font-black text-white mb-2">99.9%</div>
+                        <p class="text-[11px] text-theme uppercase font-bold tracking-widest mt-auto">Logic Accuracy</p>
+                    </div>
+                    <div class="pop-card p-8 md:p-10 rounded-3xl text-center border-theme/30 flex flex-col justify-center min-h-[200px]">
+                        <div class="text-3xl md:text-4xl font-black text-theme mb-2 tracking-wide">CLEAN</div>
+                        <p class="text-[11px] text-slate-400 uppercase font-bold tracking-widest mt-auto">Standard Code</p>
+                    </div>
+                    <div class="pop-card p-8 md:p-10 rounded-3xl text-center flex flex-col justify-center min-h-[200px]">
+                        <div class="text-3xl md:text-4xl font-black text-white mb-2 tracking-wide">FAST</div>
+                        <p class="text-[11px] text-theme uppercase font-bold tracking-widest mt-auto">Low Latency</p>
+                    </div>
+                    <div class="pop-card p-8 md:p-10 rounded-3xl text-center border-theme/30 flex flex-col justify-center min-h-[200px]">
+                        <div class="text-3xl md:text-4xl font-black text-theme mb-2 tracking-wide">MODERN</div>
+                        <p class="text-[11px] text-slate-400 uppercase font-bold tracking-widest mt-auto">Tech Stack</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profiles Dashboard (Coding Stats) -->
+    <section id="coding" class="py-32 px-6 relative">
+        <!-- Abstract gradient blob -->
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-theme opacity-[0.05] rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto text-center mb-20 reveal">
+            <div class="flex items-center justify-center gap-4 mb-4">
+                <div class="h-[2px] w-12 bg-theme"></div>
+                <h2 class="text-theme font-cherry uppercase tracking-widest text-sm">Performance Benchmarks</h2>
+                <div class="h-[2px] w-12 bg-theme"></div>
+            </div>
+            <h3 class="text-5xl md:text-6xl font-cherry uppercase text-white">Coding Ecosystem</h3>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 font-cherry relative z-10">
+            <!-- Leetcode -->
+            <div class="pop-card p-10 rounded-[40px] text-center reveal">
+                <div class="w-20 h-20 mx-auto bg-orange-500/10 rounded-2xl flex items-center justify-center mb-8">
+                    <i class="fa-solid fa-code text-orange-400 text-4xl"></i>
+                </div>
+                <h4 class="text-2xl font-black mb-2 text-white uppercase">LeetCode</h4>
+                <div class="text-5xl md:text-6xl font-black text-white mb-4">250+</div>
+                <p class="text-slate-400 uppercase text-[11px] tracking-widest font-bold">Solved Problems</p>
+                <a href="https://leetcode.com/yagval_1976" target="_blank" class="mt-8 px-6 py-3.5 rounded-xl bg-orange-500/10 text-orange-400 text-[13px] font-black block tracking-widest hover:bg-orange-500 hover:text-white transition-all uppercase">
+                    200+ Day Streak
+                </a>
+            </div>
+            
+            <!-- GFG -->
+            <div class="pop-card p-10 rounded-[40px] text-center reveal" style="transition-delay: 100ms;">
+                <div class="w-20 h-20 mx-auto bg-green-500/10 rounded-2xl flex items-center justify-center mb-8">
+                    <i class="fa-solid fa-terminal text-green-400 text-4xl"></i>
+                </div>
+                <h4 class="text-2xl font-black mb-2 text-white uppercase">GeeksforGeeks</h4>
+                <div class="text-5xl md:text-6xl font-black text-white mb-4">250+</div>
+                <p class="text-slate-400 uppercase text-[11px] tracking-widest font-bold">DSA Mastered</p>
+                <a href="https://www.geeksforgeeks.org/user/omp83075/" target="_blank" class="mt-8 px-6 py-3.5 rounded-xl bg-green-500/10 text-green-400 text-[13px] font-black block tracking-widest hover:bg-green-500 hover:text-white transition-all uppercase">
+                    Top Ranker
+                </a>
+            </div>
+            
+            <!-- Codolio -->
+            <div class="pop-card p-10 rounded-[40px] text-center reveal" style="transition-delay: 200ms;">
+                <div class="w-20 h-20 mx-auto bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-8">
+                    <i class="fa-solid fa-layer-group text-cyan-400 text-4xl"></i>
+                </div>
+                <h4 class="text-2xl font-black mb-2 text-white uppercase">Codolio</h4>
+                <div class="text-4xl md:text-5xl font-black text-white mb-4 uppercase mt-2">Verified</div>
+                <p class="text-slate-400 uppercase text-[11px] tracking-widest font-bold">Unified Dev Score</p>
+                <a href="https://codolio.com/profile/Opiu.m113" target="_blank" class="mt-8 px-6 py-3.5 rounded-xl bg-cyan-500/10 text-cyan-400 text-[13px] font-black block tracking-widest hover:bg-cyan-500 hover:text-white transition-all uppercase">
+                    Profile: Opiu.m113
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto text-center mb-24 reveal">
+            <div class="flex items-center justify-center gap-4 mb-4">
+                <div class="h-[2px] w-12 bg-theme"></div>
+                <h2 class="text-theme font-cherry uppercase tracking-widest text-sm">Case Studies</h2>
+                <div class="h-[2px] w-12 bg-theme"></div>
+            </div>
+            <h3 class="text-5xl md:text-6xl font-cherry uppercase text-white">GitHub Repositories</h3>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 font-cherry">
+            <!-- Project 1 -->
+            <div class="pop-card p-10 md:p-12 rounded-[40px] reveal group text-left flex flex-col h-full border-t border-t-white/10">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-16 h-16 rounded-2xl bg-theme/10 flex items-center justify-center">
+                        <i class="fa-solid fa-bolt-lightning text-theme text-3xl"></i>
+                    </div>
+                    <span class="text-[11px] font-bold bg-white/10 px-4 py-1.5 rounded-full uppercase tracking-tighter text-white">Trie Engine</span>
+                </div>
+                <h4 class="text-3xl md:text-4xl font-black mb-4 group-hover:text-theme transition-colors uppercase text-white">Autocomplete Trie</h4>
+                <p class="text-slate-400 text-base leading-relaxed mb-10 font-sans flex-grow">Efficient prefix matching engine using optimized Trie nodes for millisecond search latency across large datasets.</p>
+                <a href="https://github.com/Codeomii/autocomplete-trie" target="_blank" class="text-[13px] font-black tracking-widest text-white group-hover:text-theme transition-colors uppercase inline-flex items-center gap-2 mt-auto">
+                    View Repository <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-2"></i>
+                </a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="pop-card p-10 md:p-12 rounded-[40px] reveal group text-left flex flex-col h-full border-t border-t-white/10" style="transition-delay: 100ms;">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-16 h-16 rounded-2xl bg-cyan-400/10 flex items-center justify-center">
+                        <i class="fa-solid fa-brain text-cyan-400 text-3xl"></i>
+                    </div>
+                    <span class="text-[11px] font-bold bg-white/10 px-4 py-1.5 rounded-full uppercase tracking-tighter text-white">ML Pipeline</span>
+                </div>
+                <h4 class="text-3xl md:text-4xl font-black mb-4 group-hover:text-cyan-400 transition-colors uppercase text-white">Music Classifier</h4>
+                <p class="text-slate-400 text-base leading-relaxed mb-10 font-sans flex-grow">Signal processing pipeline to extract audio features and classify musical moods using advanced ML models.</p>
+                <a href="https://github.com/Codeomii/music-mood-classifier" target="_blank" class="text-[13px] font-black tracking-widest text-white group-hover:text-cyan-400 transition-colors uppercase inline-flex items-center gap-2 mt-auto">
+                    View Repository <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-2"></i>
+                </a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="pop-card p-10 md:p-12 rounded-[40px] reveal group text-left flex flex-col h-full border-t border-t-white/10">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-16 h-16 rounded-2xl bg-green-400/10 flex items-center justify-center">
+                        <i class="fa-solid fa-code-branch text-green-400 text-3xl"></i>
+                    </div>
+                    <span class="text-[11px] font-bold bg-white/10 px-4 py-1.5 rounded-full uppercase tracking-tighter text-white">DSA Logic</span>
+                </div>
+                <h4 class="text-3xl md:text-4xl font-black mb-4 group-hover:text-green-400 transition-colors uppercase text-white">GFG Solutions</h4>
+                <p class="text-slate-400 text-base leading-relaxed mb-10 font-sans flex-grow">A highly structured collection of complex problem-solving logic and optimized algorithms for GeeksforGeeks challenges.</p>
+                <a href="https://github.com/Codeomii/geeksforgeeks_DSA" target="_blank" class="text-[13px] font-black tracking-widest text-white group-hover:text-green-400 transition-colors uppercase inline-flex items-center gap-2 mt-auto">
+                    View Repository <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-2"></i>
+                </a>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="pop-card p-10 md:p-12 rounded-[40px] reveal group text-left flex flex-col h-full border-t border-t-white/10" style="transition-delay: 100ms;">
+                <div class="flex justify-between items-start mb-8">
+                    <div class="w-16 h-16 rounded-2xl bg-purple-400/10 flex items-center justify-center">
+                        <i class="fa-solid fa-calendar-check text-purple-400 text-3xl"></i>
+                    </div>
+                    <span class="text-[11px] font-bold bg-white/10 px-4 py-1.5 rounded-full uppercase tracking-tighter text-white">Consistency</span>
+                </div>
+                <h4 class="text-3xl md:text-4xl font-black mb-4 group-hover:text-purple-400 transition-colors uppercase text-white">LeetCode Daily</h4>
+                <p class="text-slate-400 text-base leading-relaxed mb-10 font-sans flex-grow">Continuous daily documentation of problem-solving techniques and approaches for LeetCode's Problem of the Day (POTD).</p>
+                <a href="https://github.com/Codeomii/leetcode_DSA_Potd-s" target="_blank" class="text-[13px] font-black tracking-widest text-white group-hover:text-purple-400 transition-colors uppercase inline-flex items-center gap-2 mt-auto">
+                    View Repository <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 relative">
+        <div class="absolute right-0 bottom-0 w-[500px] h-[500px] bg-theme opacity-[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="reveal text-left">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-[2px] w-12 bg-theme"></div>
+                    <h2 class="text-theme font-cherry uppercase tracking-widest text-sm">Get In Touch</h2>
+                </div>
+                <h3 class="text-5xl md:text-7xl font-cherry mb-8 uppercase text-white leading-tight">Let's Connect</h3>
+                <p class="text-slate-400 mb-12 text-xl leading-relaxed font-light font-cherry">
+                    Currently open to internships, freelance data engineering projects, or technical collaborations. Drop a message!
+                </p>
+                
+                <div class="space-y-8">
+                    <div class="flex items-center gap-6 group">
+                        <div class="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-theme text-2xl group-hover:bg-theme group-hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(0,255,204,0.1)]">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="font-cherry">
+                            <p class="text-[12px] text-slate-500 uppercase font-black tracking-widest mb-1">Email Address</p>
+                            <a href="mailto:omp83075@gmail.com" class="text-xl md:text-2xl font-bold group-hover:text-theme transition-colors text-white break-all">omp83075@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 mt-14">
+                    <a href="https://linkedin.com/in/ompatel2610/" target="_blank" class="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl hover:bg-[#0077b5] hover:border-[#0077b5] hover:text-white transition-all text-slate-400 hover:-translate-y-1">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Codeomii" target="_blank" class="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl hover:bg-white hover:border-white hover:text-black transition-all text-slate-400 hover:-translate-y-1">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="pop-card p-8 md:p-12 rounded-[40px] reveal border-t border-t-white/10">
+                <form action="https://formsubmit.co/omp83075@gmail.com" method="POST" class="space-y-6 font-cherry text-left">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[12px] uppercase font-bold tracking-widest text-slate-400 mb-2 ml-1">Name</label>
+                            <input type="text" name="name" required placeholder="John Doe" class="w-full px-6 py-4 rounded-xl input-field text-base">
+                        </div>
+                        <div>
+                            <label class="block text-[12px] uppercase font-bold tracking-widest text-slate-400 mb-2 ml-1">Email</label>
+                            <input type="email" name="email" required placeholder="john@example.com" class="w-full px-6 py-4 rounded-xl input-field text-base">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[12px] uppercase font-bold tracking-widest text-slate-400 mb-2 ml-1">Subject</label>
+                        <input type="text" name="subject" placeholder="Internship Inquiry" class="w-full px-6 py-4 rounded-xl input-field text-base">
+                    </div>
+                    <div>
+                        <label class="block text-[12px] uppercase font-bold tracking-widest text-slate-400 mb-2 ml-1">Message</label>
+                        <textarea name="message" rows="4" required placeholder="Write your message here..." class="w-full px-6 py-4 rounded-xl input-field text-base resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-5 rounded-xl bg-theme text-black font-black uppercase text-lg tracking-widest hover:shadow-[0_0_25px_rgba(0,255,204,0.5)] transition-all hover:-translate-y-1 mt-2">
+                        Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 text-center bg-black/50 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-cherry mb-10 uppercase tracking-tighter text-white">Ready for <span class="text-theme italic">Impact?</span></h3>
+            
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
+                <a href="mailto:omp83075@gmail.com" class="hover:text-theme hover:border-theme transition-all font-cherry text-[12px] tracking-widest border border-white/10 bg-white/5 px-8 py-3 rounded-full uppercase text-slate-300">Email Me</a>
+                <a href="https://linkedin.com/in/ompatel2610/" target="_blank" class="hover:text-[#0077b5] hover:border-[#0077b5] transition-all font-cherry text-[12px] tracking-widest border border-white/10 bg-white/5 px-8 py-3 rounded-full uppercase text-slate-300">LinkedIn</a>
+                <a href="https://github.com/Codeomii" target="_blank" class="hover:text-white hover:border-white transition-all font-cherry text-[12px] tracking-widest border border-white/10 bg-white/5 px-8 py-3 rounded-full uppercase text-slate-300">GitHub</a>
+            </div>
+            
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
+            
+            <p class="text-slate-500 text-[11px] font-bold tracking-[0.3em] uppercase font-cherry">
+                &copy; 2026 Om Patel <span class="text-theme mx-2">•</span> Data Engineer <span class="text-theme mx-2">•</span> Rohtak, India
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const menuIcon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if(mobileMenu.classList.contains('open')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Typewriter Effect for Hero Section
+        const phrases = [
+            "Data Pipelines.", 
+            "Machine Learning Models.", 
+            "Optimized Algorithms.",
+            "Scalable Architectures."
+        ];
+        let currentPhrase = 0;
+        let isDeleting = false;
+        let text = '';
+        const typeSpeed = 100;
+        const deleteSpeed = 50;
+        const delayBetween = 2000;
+
+        function typeWriter() {
+            const displayElement = document.getElementById('typewriter');
+            const fullText = phrases[currentPhrase];
+
+            if (isDeleting) {
+                text = fullText.substring(0, text.length - 1);
+            } else {
+                text = fullText.substring(0, text.length + 1);
+            }
+
+            displayElement.innerHTML = text;
+
+            let typeDelay = isDeleting ? deleteSpeed : typeSpeed;
+
+            if (!isDeleting && text === fullText) {
+                typeDelay = delayBetween;
+                isDeleting = true;
+            } else if (isDeleting && text === '') {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                typeDelay = 500;
+            }
+
+            setTimeout(typeWriter, typeDelay);
+        }
+
+        // Start typewriter on load
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Resume Download Logic (Modernized Output)
+        function downloadResume() {
+            const resumeHTML = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Om Patel - Resume</title>
+                <style>
+                    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; background: #0f1113; color: #e2e8f0; line-height: 1.6; max-width: 800px; margin: auto; }
+                    h1 { color: #00ffcc; font-size: 38px; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px;}
+                    p.subtitle { font-size: 18px; color: #a0aec0; margin-top: 0; margin-bottom: 30px; letter-spacing: 1px;}
+                    h2 { color: #fff; text-transform: uppercase; border-bottom: 2px solid #00ffcc; padding-bottom: 8px; margin-top: 30px; font-size: 20px; letter-spacing: 1px;}
+                    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
+                    .item { background: #1a202c; padding: 15px; border-radius: 8px; border-left: 4px solid #00ffcc; }
+                    strong { color: #fff; }
+                    ul { padding-left: 20px; }
+                    li { margin-bottom: 8px; color: #cbd5e0; }
+                    a { color: #00ffcc; text-decoration: none; }
+                </style>
+            </head>
+            <body>
+                <h1>Om Patel</h1>
+                <p class="subtitle">Data Engineer | AI & ML Specialist</p>
+                <p>Email: <a href="mailto:omp83075@gmail.com">omp83075@gmail.com</a> | Location: Rohtak, India | LinkedIn: <a href="https://linkedin.com/in/ompatel2610/">ompatel2610</a></p>
+                
+                <h2>Education</h2>
+                <div class="item" style="border-left-color: #a0aec0;">
+                    <strong>B.Tech CSE (AI & ML)</strong><br>
+                    Baba MastNath University (2024 - 2028)<br>
+                    <em>Currently in 2nd Year</em>
+                </div>
+
+                <h2>Technical Skills</h2>
+                <div class="grid">
+                    <div class="item">
+                        <strong>Languages</strong><br>
+                        Python, C, C++, HTML, CSS, SQL
+                    </div>
+                    <div class="item">
+                        <strong>Libraries & Tools</strong><br>
+                        NumPy, Pandas, Scikit-learn, Git
+                    </div>
+                    <div class="item">
+                        <strong>Core Focus</strong><br>
+                        Data Science, ML Algorithms, DSA
+                    </div>
+                    <div class="item">
+                        <strong>Strengths</strong><br>
+                        Logical Thinking, Optimization
+                    </div>
+                </div>
+
+                <h2>Key Projects</h2>
+                <ul>
+                    <li><strong>Autocomplete Trie Engine:</strong> Optimized prefix matching engine ensuring millisecond latency.</li>
+                    <li><strong>Music Mood Classifier:</strong> ML pipeline for audio signal processing and classification.</li>
+                    <li><strong>DSA Solutions Architecture:</strong> Extensive repository of optimized logic for 250+ algorithmic problems.</li>
+                </ul>
+
+                <h2>Coding Profiles</h2>
+                <ul>
+                    <li><strong>LeetCode:</strong> 250+ Problems Solved (200+ Day Streak)</li>
+                    <li><strong>GeeksforGeeks:</strong> 250+ Problems Solved</li>
+                    <li><strong>Codolio:</strong> Verified Dev Score Profile</li>
+                </ul>
+            </body>
+            </html>`;
+            const blob = new Blob([resumeHTML], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'Om_Patel_Resume.html';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        // --- Perspective Cyber Flow Animation ---
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, lines = [], streaks = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            init();
+        }
+        window.addEventListener('resize', resize);
+
+        class PerspectiveLine {
+            constructor(x) { this.x = x; }
+            draw() {
+                ctx.beginPath(); 
+                ctx.strokeStyle = 'rgba(0, 255, 204, 0.04)';
+                ctx.lineWidth = 1; 
+                ctx.moveTo(width / 2, -100);
+                ctx.lineTo(this.x, height + 100); 
+                ctx.stroke();
+            }
+        }
+
+        class DataStreak {
+            constructor() { this.init(); }
+            init() {
+                this.progress = 0; 
+                this.speed = 0.003 + Math.random() * 0.008;
+                this.lineIndex = Math.floor(Math.random() * lines.length);
+                this.length = 0.1 + Math.random() * 0.2; 
+                this.opacity = 0.1 + Math.random() * 0.6;
+            }
+            update() { 
+                this.progress += this.speed; 
+                if (this.progress > 1.2) this.init(); 
+            }
+            draw() {
+                const targetX = lines[this.lineIndex].x; 
+                const startX = width / 2;
+                const startY = -100, endY = height + 100;
+                const currentY = startY + (endY - startY) * this.progress;
+                const currentX = startX + (targetX - startX) * this.progress;
+                const tailY = startY + (endY - startY) * (this.progress - this.length);
+                const tailX = startX + (targetX - startX) * (this.progress - this.length);
+                
+                const grad = ctx.createLinearGradient(tailX, tailY, currentX, currentY);
+                grad.addColorStop(0, 'transparent'); 
+                grad.addColorStop(1, `rgba(0, 255, 204, ${this.opacity})`);
+                
+                ctx.beginPath(); 
+                ctx.strokeStyle = grad; 
+                ctx.lineWidth = 2;
+                ctx.moveTo(tailX, tailY); 
+                ctx.lineTo(currentX, currentY); 
+                ctx.stroke();
+            }
+        }
+
+        function init() {
+            lines = []; streaks = []; 
+            // Calculate lines based on screen width for better mobile experience
+            const lineCount = window.innerWidth < 768 ? 10 : 20;
+            const streakCount = window.innerWidth < 768 ? 15 : 35;
+            
+            for (let i = 0; i <= lineCount; i++) {
+                lines.push(new PerspectiveLine((width / lineCount) * i));
+            }
+            for (let i = 0; i < streakCount; i++) {
+                streaks.push(new DataStreak());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw horizontal perspective lines
+            ctx.beginPath(); 
+            ctx.strokeStyle = 'rgba(0, 255, 204, 0.02)';
+            for (let i = 0; i < 12; i++) { 
+                const y = Math.pow(i / 12, 2) * height; 
+                ctx.moveTo(0, y); 
+                ctx.lineTo(width, y); 
+            }
+            ctx.stroke(); 
+            
+            lines.forEach(line => line.draw());
+            streaks.forEach(streak => { streak.update(); streak.draw(); });
+            
+            requestAnimationFrame(animate);
+        }
+
+        resize(); 
+        animate();
+
+        // Scroll Reveal logic (runs only once per element to prevent flickering)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Unobserve after animating once so it stays visible
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
